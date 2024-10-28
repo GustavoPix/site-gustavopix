@@ -1,0 +1,45 @@
+$_font-name: 'Ubuntu Mono';
+$_font-path: '@/assets/fonts/UbuntuMono';
+
+@font-face {
+	font-family: $_font-name;
+	font-weight: 400;
+	font-style: normal;
+	src: url('#{$_font-path}-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: $_font-name;
+	font-weight: 700;
+	font-style: normal;
+	src: url('#{$_font-path}-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: $_font-name;
+	font-weight: 400;
+	font-style: italic;
+	src: url('#{$_font-path}-Italic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: $_font-name;
+	font-weight: 700;
+	font-style: italic;
+	src: url('#{$_font-path}-BoldItalic.ttf') format('truetype');
+}
+
+* {
+	font-family: 'Ubuntu Mono', monospace;
+}
+
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Ubuntu Mono', monospace;
+}
