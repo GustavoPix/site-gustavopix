@@ -1,14 +1,21 @@
 <template>
 	<div>
 		<First class="section" />
+		<Projetos class="section" />
+		<Contatos class="section" />
 	</div>
 </template>
 <script>
 import First from './Home/First.vue'
+import Projetos from './Home/Projetos.vue'
+import Contatos from '@/components/Contatos.vue'
+
 export default {
 	name: 'Home',
 	components: {
-		First
+		First,
+		Projetos,
+		Contatos
 	}
 }
 </script>
@@ -17,8 +24,8 @@ export default {
 .section{
 	width: 100%;
 	max-width: 1180px;
-	height: 100vh;
 	margin: 0 auto;
+	margin-bottom: 250px;
 	padding-left: 20px;
 	padding-right: 20px;
 }
