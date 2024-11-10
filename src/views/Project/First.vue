@@ -1,11 +1,13 @@
 <template>
 	<div class="first">
-		<h1 class="title">{{ title }}</h1>
+		<h1 class="title" v-if="title">{{ title }}</h1>
 		<div class="row">
 			<div class="image">
 				<img :src="image" alt="">
 			</div>
-			<p class="text">{{ text }}</p>
+			<p class="text" :style="{
+				order: textAlign === 'left' ? -1 : 0
+			}">{{ text }}</p>
 		</div>
 	</div>
 </template>
@@ -17,7 +19,11 @@ export default {
 	props: {
 		title: String,
 		text: String,
-		image: String
+		image: String,
+		textAlign: {
+			type: String,
+			default: 'left'
+		}
 	}
 }
 </script>

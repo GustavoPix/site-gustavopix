@@ -29,7 +29,8 @@ export default {
 		content: '';
 		width: 100%;
 		height: 5px;
-		background: #41B883;
+		//background: #41B883;
+		background: #00bfa6;
 		position: absolute;
 		bottom: 0px;
 		border-radius: 10px 10px 0 0;

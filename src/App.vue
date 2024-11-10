@@ -1,4 +1,7 @@
 <template>
+  <Header
+    @changePage="changePage"
+  />
   <Home
     v-if="page === 'home'"
     @changePage="changePage"
@@ -13,6 +16,7 @@
 <script>
 import Home from '@/views/Home.vue'
 import Memocalc from '@/views/Memocalc.vue';
+import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
@@ -20,7 +24,8 @@ export default {
   components: {
     Home,
     Memocalc,
-    Footer
+    Footer,
+    Header
   },
   data(){
     return {
