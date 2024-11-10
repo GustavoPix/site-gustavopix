@@ -3,7 +3,7 @@
 		<h2 class="title">Projetos</h2>
 		<ul class="projetos">
 			<li>
-				<a href="" class="projeto">
+				<div @click="changePage('memocalc')" class="projeto">
 					<IconMemoCalc class="projeto-icon"/>
 					<h3 class="projeto-name">Memo-calc</h3>
 					<p class="projeto-descricao">Calculadora avançada com uso de variáveis</p>
@@ -15,7 +15,7 @@
 							<LogoElectron />
 						</li>
 					</ul>
-				</a>
+				</div>
 			</li>
 		</ul>
 	</div>
@@ -31,6 +31,11 @@ export default {
 		IconMemoCalc,
 		LogoVue,
 		LogoElectron
+	},
+	methods: {
+		changePage(page){
+			this.$emit('changePage', page)
+		}
 	}
 }
 </script>

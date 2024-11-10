@@ -4,21 +4,21 @@
 		<div class="row">
 			<ul class="contatos">
 				<li class="contato">
-					<a href="">
+					<a href="https://www.linkedin.com/in/gustavopix/" target="_blank">
 						<LogoLinkedin class="contato-icon" />
 						gustavo-carvalho
 					</a>
 				</li>
 				<li class="contato">
-					<a href="">
+					<a href="https://github.com/GustavoPix" target="_blank">
 						<LogoGithub class="contato-icon" />
 						gustavo-carvalho
 					</a>
 				</li>
 				<li class="contato">
-					<a href="">
+					<a href="https://wa.me/+5511949080043" target="_blank">
 						<logoMobile class="contato-icon" />
-						(11) 99999-9999
+						+55 (11) 94908-0043
 					</a>
 				</li>
 			</ul>

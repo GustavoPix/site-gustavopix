@@ -1,7 +1,10 @@
 <template>
 	<div>
 		<First class="section" />
-		<Projetos class="section" />
+		<Projetos
+			class="section"
+			@changePage="changePage"
+		/>
 		<Contatos class="section" />
 	</div>
 </template>
@@ -16,6 +19,11 @@ export default {
 		First,
 		Projetos,
 		Contatos
+	},
+	methods: {
+		changePage(page){
+			this.$emit('changePage', page)
+		}
 	}
 }
 </script>

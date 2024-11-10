@@ -1,17 +1,38 @@
 <template>
-  <Home/>
+  <Home
+    v-if="page === 'home'"
+    @changePage="changePage"
+  />
+  <Memocalc
+    v-else-if="page === 'memocalc'"
+    @changePage="changePage"
+  />
   <Footer/>
 </template>
 
 <script>
 import Home from '@/views/Home.vue'
+import Memocalc from '@/views/Memocalc.vue';
 import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
     Home,
+    Memocalc,
     Footer
+  },
+  data(){
+    return {
+      page: 'home'
+    }
+  },
+  methods: {
+    changePage(page){
+      //set scroll to top
+      window.scrollTo(0, 0)
+      this.page = page
+    }
   }
 }
 </script>
