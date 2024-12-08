@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2 class="title">Contatos</h2>
+		<h2 class="title" v-html="text[lang].title"></h2>
 		<div class="row">
 			<ul class="contatos">
 				<li class="contato">
@@ -39,6 +39,19 @@ export default {
 		LogoLinkedin,
 		LogoGithub,
 		logoMobile
+	},
+	props: ['lang'],
+	data(){
+		return {
+			text: {
+				BR: {
+					title: 'Contatos',
+				},
+				EN: {
+					title: 'Contacts',
+				}
+			}
+		}
 	}
 }
 

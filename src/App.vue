@@ -1,14 +1,18 @@
 <template>
   <Header
     @changePage="changePage"
+    @changeLang="changeLang"
+    :lang="lang"
   />
   <Home
     v-if="page === 'home'"
     @changePage="changePage"
+    :lang="lang"
   />
   <Memocalc
     v-else-if="page === 'memocalc'"
     @changePage="changePage"
+    :lang="lang"
   />
   <Footer/>
 </template>
@@ -29,7 +33,8 @@ export default {
   },
   data(){
     return {
-      page: 'home'
+      page: 'home',
+      lang: 'BR'
     }
   },
   methods: {
@@ -37,6 +42,9 @@ export default {
       //set scroll to top
       window.scrollTo(0, 0)
       this.page = page
+    },
+    changeLang(lang){
+      this.lang = lang
     }
   }
 }

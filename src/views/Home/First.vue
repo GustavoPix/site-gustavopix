@@ -1,9 +1,9 @@
 <template>
 	<div class="first">
-		<h1 class="title">Olá, eu sou o <span>Gustavo Carvalho</span>, um desenvolvedor full stack</h1>
+		<h1 class="title" v-html="text[lang].title"></h1>
 		<div class="row">
 			<IconSVG class="icon" />
-			<p class="text">Obrigado por visitar o meu site, ele ainda está sendo construído mas sinta-se a vontade para conhecer meus projetos de destaque e entrar em contato comigo.</p>
+			<p class="text" v-html="text[lang].text"></p>
 		</div>
 	</div>
 </template>
@@ -13,6 +13,21 @@ import IconSVG from '@/assets/svgs/undraw_programming.vue'
 export default {
 	components: {
 		IconSVG
+	},
+	props: ['lang'],
+	data(){
+		return {
+			text: {
+				BR: {
+					title: 'Olá, eu sou o <span class="span-active">Gustavo Carvalho</span>, um desenvolvedor full stack',
+					text: 'Obrigado por visitar o meu site, ele ainda está sendo construído mas sinta-se a vontade para conhecer meus projetos de destaque e entrar em contato comigo.'
+				},
+				EN: {
+					title: 'Hello, I am <span class="span-active">Gustavo Carvalho</span>, a full stack developer',
+					text: 'Thank you for visiting my website, it is still being built but feel free to check out my featured projects and get in touch with me.'
+				}
+			}
+		}
 	}
 }
 </script>
@@ -58,5 +73,11 @@ export default {
 	@media (max-width: 768px){
 		max-width: 350px;
 	}
+}
+</style>
+
+<style lang="scss">
+.span-active{
+	color: #00BFA6;
 }
 </style>

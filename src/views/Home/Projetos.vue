@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<h2 class="title">Projetos</h2>
+		<h2 class="title" v-html="text[lang].title"></h2>
 		<ul class="projetos">
 			<li>
 				<div @click="changePage('memocalc')" class="projeto">
 					<IconMemoCalc class="projeto-icon"/>
 					<h3 class="projeto-name">Memo-calc</h3>
-					<p class="projeto-descricao">Calculadora avançada com uso de variáveis</p>
+					<p class="projeto-descricao" v-html="text[lang].memocalc"></p>
 					<ul class="projeto-techs">
 						<li>
 							<LogoVue />
@@ -31,6 +31,21 @@ export default {
 		IconMemoCalc,
 		LogoVue,
 		LogoElectron
+	},
+	props: ['lang'],
+	data(){
+		return {
+			text: {
+				BR: {
+					title: 'Projetos',
+					memocalc: 'Calculadora avançada com uso de variáveis'
+				},
+				EN: {
+					title: 'Projects',
+					memocalc: 'Advanced calculator with variable usage'
+				}
+			}
+		}
 	},
 	methods: {
 		changePage(page){

@@ -1,11 +1,18 @@
 <template>
 	<div>
-		<First class="section" />
+		<First
+			class="section"
+			:lang="lang"
+		/>
 		<Projetos
 			class="section"
 			@changePage="changePage"
+			:lang="lang"
 		/>
-		<Contatos class="section" />
+		<Contatos
+			class="section"
+			:lang="lang"
+		/>
 	</div>
 </template>
 <script>
@@ -15,6 +22,7 @@ import Contatos from '@/components/Contatos.vue'
 
 export default {
 	name: 'Home',
+	props: ['lang'],
 	components: {
 		First,
 		Projetos,
