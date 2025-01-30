@@ -4,7 +4,7 @@
 		<ul class="buttons">
 			<li v-for="download in downloads" :key="download.id" class="button">
 				<a :href="download.link" target="_blank">
-					{{ download.name }}
+					{{ download.name[lang] }}
 				</a>
 			</li>
 		</ul>
@@ -15,7 +15,8 @@
 export default {
 	props: {
 		downloads: Array,
-		title: String
+		title: String,
+		lang: String
 	}
 }
 </script>
