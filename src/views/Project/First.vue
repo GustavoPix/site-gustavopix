@@ -67,4 +67,16 @@ export default {
 		max-width: 350px;
 	}
 }
+
+.image{
+	max-width: 50%;
+	flex-basis: 50%;
+	min-width: 50%;
+	img{
+		width: 100%;
+		max-width: fit-content;
+		height: auto;
+
+	}
+}
 </style>

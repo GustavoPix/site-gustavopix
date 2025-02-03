@@ -4,25 +4,25 @@
 			class="section"
 			title="Memocalc"
 			:text="text[lang].sec_1"
-			image="https://picsum.photos/200/300"
+			image="/images/mem01.png"
 			textAlign="right"
-		/>
-		<First
+			/>
+			<First
 			class="section"
 			:text="text[lang].sec_2"
-			image="https://picsum.photos/200/301"
+			image="/images/mem02.png"
 			textAlign="left"
-		/>
-		<First
+			/>
+			<First
 			class="section"
 			:text="text[lang].sec_3"
-			image="https://picsum.photos/200/302"
+			image="/images/mem03.png"
 			textAlign="right"
-		/>
-		<First
+			/>
+			<First
 			class="section"
 			:text="text[lang].sec_4"
-			image="https://picsum.photos/200/303"
+			image="/images/mem04.png"
 			textAlign="left"
 		/>
 		<Downloads
