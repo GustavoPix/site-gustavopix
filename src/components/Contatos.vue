@@ -18,7 +18,7 @@
 				<li class="contato">
 					<a href="https://wa.me/+5511949080043" target="_blank">
 						<logoMobile class="contato-icon" />
-						+55 (11) 94908-0043
+						+55 (19) 99551-7805
 					</a>
 				</li>
 			</ul>

@@ -80,14 +80,14 @@ export default {
 						BR: 'Baixar para Windows',
 						EN: 'Download for Windows'
 					},
-					link: 'https://memocalc.com'
+					link: 'https://github.com/GustavoPix/memo_calculator/releases/download/v1.0.0/Memo-calc-Windows-1-0-0.exe'
 				},
 				{
 					name: {
 						BR: 'Baixar para Linux',
 						EN: 'Download for Linux'
 					},
-					link: 'https://memocalc.com'
+					link: 'https://github.com/GustavoPix/memo_calculator/releases/download/v1.0.0/Memo-calc-Linux-1-0-0.AppImage'
 				}
 			]
 		}
