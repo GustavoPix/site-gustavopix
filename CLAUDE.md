@@ -149,6 +149,29 @@ Extraídos do Penpot e **normalizados para múltiplos de 2**. Defina-os todos em
 | `--color-text-muted` | branco com opacidade | parágrafos secundários (confirmar opacidade no Penpot; garantir contraste ≥ 4.5:1) |
 | `--color-border` | branco com opacidade baixa | borda 1px dos cards (confirmar no Penpot) |
 
+### Temas
+
+Três temas completos, trocados pelo conta-gotas do header (`ThemePicker.vue`, `useTheme.js`), aplicados via `<html data-theme>` e salvos em `localStorage`:
+
+| Tema | `--color-bg` | `--color-surface` | `--color-primary-dark` | `--color-accent` |
+|---|---|---|---|---|
+| `midnight` (padrão, Penpot) | `#0F131A` | `#242C38` | `#27354E` | `#5779B6` |
+| `dracula` | `#282A36` | `#343746` | `#44475A` | `#BD93F9` |
+| `nord` | `#2E3440` | `#3B4252` | `#434C5E` | `#88C0D0` |
+
+- As cores derivadas (`--color-bg-translucent`, `--color-accent-soft`, `--color-accent-line`) são calculadas com `color-mix`. Componentes nunca usam hex direto.
+- Para adicionar um tema: bloco `[data-theme='x']` em `_tokens.scss`, id em `THEMES` (`useTheme.js`), item em `site.json > nav.themes` e em `fallback.js`, e as cores do loader no `<script>`/`<style>` do `index.html`.
+- O header segue https://cesargomez.dev/: shell pill translúcido com `backdrop-filter`; borda branca a 12% e sombra só depois do scroll; links de 12px em maiúsculas.
+- Menu na mesma ordem das seções do site. Uma "bolha" (`.header__bubble`) desliza até o link em hover ou da seção ativa, com `--ease-bounce` e um squash elástico (`bubble-squash`) a cada movimento.
+- Fundo estrelado (`StarField.vue`), no estilo de https://devhasibulislam.vercel.app/: `<canvas>` fixo com `z-index: -1`. Cada estrela deriva numa direção aleatória (2–8px/s, reaparece do lado oposto) e cintila em intervalos aleatórios (1.5–9s). A densidade e os intervalos são constantes no topo do script. Com `prefers-reduced-motion`, as estrelas ficam estáticas.
+- A vinheta radial (`transparent → --color-bg 80%`) fica no próprio StarField, então se mantém fixa durante o scroll em todo o site.
+- Cards com `spotlight` (`<Card spotlight>`, hoje em Sobre e Stacks): brilho radial de 480px no accent a 12% que segue o mouse, como os cards "receipts" de devhasibulislam. Quando o mouse sai, volta para 92%/8%. `--spot-x/--spot-y` são `@property` em `main.scss`.
+- Cards de Stacks e Projetos usam `<Chip variant="outline">`, nas proporções da seção #skills de portfolio-sweandrew. No hover, o título dos cards de Stacks vai de 50% para branco.
+- Projetos: cada item tem um único `url` e um botão "Visite" (`ui.visit`).
+- Contatos: cada item tem uma chave `icon` (`email | linkedin | github | whatsapp`), renderizada por `ContactIcon.vue`.
+- Experiências: timeline guiada pelo scroll, como a seção #experience de portfolio-sweandrew. O preenchimento vai até a "cabeça" no meio da viewport. Ficam ativos os itens até 35% da tela acima dela, e o mais recente ganha um anel pulsante. Itens desativados ficam com `--timeline-inactive` (0.5).
+- Por causa dessa camada, **nem o `body` nem as seções podem ter background**; o fundo fica no `html`. Cards usam `--color-bg` e cobrem as estrelas.
+
 ### Tipografia
 
 - Família: **Ubuntu Sans** (Google Fonts, pesos 400, 600, 800). Substitui a Ubuntu Mono local (`src/assets/fonts/`).

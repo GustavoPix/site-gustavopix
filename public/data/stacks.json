@@ -1,0 +1,21 @@
+{
+	"label": { "pt": "Stacks", "en": "Stacks" },
+	"groups": [
+		{
+			"title": { "pt": "[demo] Linguagens", "en": "[demo] Languages" },
+			"items": ["PHP", "JavaScript", "HTML", "CSS"]
+		},
+		{
+			"title": { "pt": "[demo] Frontend", "en": "[demo] Frontend" },
+			"items": ["Vue", "Sass", "Vite"]
+		},
+		{
+			"title": { "pt": "[demo] Backend", "en": "[demo] Backend" },
+			"items": ["Node", "PHP", "REST APIs"]
+		},
+		{
+			"title": { "pt": "[demo] Desktop e ferramentas", "en": "[demo] Desktop and tools" },
+			"items": ["Electron", "Git", "GitHub"]
+		}
+	]
+}

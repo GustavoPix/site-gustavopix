@@ -1,0 +1,76 @@
+{
+	"label": {
+		"pt": "Projetos",
+		"en": "Projects"
+	},
+	"intro": {
+		"pt": "[demo] Uma seleção de projetos pessoais e profissionais, de aplicativos desktop a produtos web completos.",
+		"en": "[demo] A selection of personal and professional projects, from desktop apps to complete web products."
+	},
+	"items": [
+		{
+			"id": "memocalc",
+			"title": {
+				"pt": "Memocalc",
+				"en": "Memocalc"
+			},
+			"description": {
+				"pt": "Memocalc é uma calculadora que utiliza variáveis, permitindo que você crie uma expressão matemática e use o resultado em outras expressões.",
+				"en": "Memocalc is a calculator that uses variables, allowing you to create a mathematical expression and use the result in other expressions."
+			},
+			"tags": [
+				"Vue",
+				"Electron"
+			],
+			"url": "https://github.com/GustavoPix/memo_calculator"
+		},
+		{
+			"id": "demo-1",
+			"title": {
+				"pt": "[demo] Nome do projeto",
+				"en": "[demo] Project name"
+			},
+			"description": {
+				"pt": "[demo] Plataforma web com painel administrativo e API própria.",
+				"en": "[demo] Web platform with an admin dashboard and its own API."
+			},
+			"tags": [
+				"Vue",
+				"Node"
+			],
+			"url": "https://github.com/GustavoPix"
+		},
+		{
+			"id": "demo-2",
+			"title": {
+				"pt": "[demo] Nome do projeto",
+				"en": "[demo] Project name"
+			},
+			"description": {
+				"pt": "[demo] Bot de automação integrado a serviços de mensagem.",
+				"en": "[demo] Automation bot integrated with messaging services."
+			},
+			"tags": [
+				"Node",
+				"API"
+			],
+			"url": "https://github.com/GustavoPix"
+		},
+		{
+			"id": "demo-3",
+			"title": {
+				"pt": "[demo] Nome do projeto",
+				"en": "[demo] Project name"
+			},
+			"description": {
+				"pt": "[demo] Site institucional rápido, responsivo e fácil de editar.",
+				"en": "[demo] Fast, responsive and easy to edit institutional website."
+			},
+			"tags": [
+				"PHP",
+				"CSS"
+			],
+			"url": "https://github.com/GustavoPix"
+		}
+	]
+}

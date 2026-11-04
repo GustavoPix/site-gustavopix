@@ -1,58 +1,70 @@
 <template>
-  <Header
-    @changePage="changePage"
-    @changeLang="changeLang"
-    :lang="lang"
-  />
-  <Home
-    v-if="page === 'home'"
-    @changePage="changePage"
-    :lang="lang"
-  />
-  <Memocalc
-    v-else-if="page === 'memocalc'"
-    @changePage="changePage"
-    :lang="lang"
-  />
-  <Footer/>
+	<Transition name="fade" mode="out-in">
+		<AppLoader v-if="site.status === 'loading'" :label="t(fallback.ui.loading)" />
+
+		<div v-else class="app">
+			<StarField />
+			<AppHeader :nav="data.nav" />
+			<main>
+				<HeroSection :hero="data.hero" />
+				<template v-if="site.status === 'ready'">
+					<SobreSection :sobre="data.sobre" />
+					<StacksSection :stacks="data.stacks" />
+					<ExperienciasSection :experiencias="data.experiencias" />
+					<ProjetosSection :projetos="data.projetos" :ui="data.ui" />
+				</template>
+				<ContatosSection :contatos="data.contatos" :ui="data.ui" />
+			</main>
+			<AppFooter :footer="data.footer" />
+		</div>
+	</Transition>
 </template>
 
-<script>
-import Home from '@/views/Home.vue'
-import Memocalc from '@/views/Memocalc.vue';
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+<script setup>
+import { computed, onMounted, watchEffect } from 'vue'
+import { loadSiteData, useSiteData } from '@/composables/useSiteData.js'
+import { useLang } from '@/composables/useLang.js'
+import fallback from '@/data/fallback.js'
+import AppLoader from '@/components/layout/AppLoader.vue'
+import AppHeader from '@/components/layout/AppHeader.vue'
+import AppFooter from '@/components/layout/AppFooter.vue'
+import StarField from '@/components/layout/StarField.vue'
+import HeroSection from '@/sections/HeroSection.vue'
+import SobreSection from '@/sections/SobreSection.vue'
+import StacksSection from '@/sections/StacksSection.vue'
+import ExperienciasSection from '@/sections/ExperienciasSection.vue'
+import ProjetosSection from '@/sections/ProjetosSection.vue'
+import ContatosSection from '@/sections/ContatosSection.vue'
 
-export default {
-  name: 'App',
-  components: {
-    Home,
-    Memocalc,
-    Footer,
-    Header
-  },
-  data(){
-    return {
-      page: 'home',
-      lang: 'BR'
-    }
-  },
-  methods: {
-    changePage(page){
-      //set scroll to top
-      window.scrollTo(0, 0)
-      this.page = page
-    },
-    changeLang(lang){
-      this.lang = lang
-    }
-  }
-}
+const site = useSiteData()
+const data = computed(() => site.data)
+const { t } = useLang()
+
+onMounted(loadSiteData)
+
+watchEffect(() => {
+	const meta = data.value?.meta
+	if (!meta) return
+	document.title = t(meta.title)
+	document.querySelector('meta[name="description"]')?.setAttribute('content', t(meta.description))
+})
 </script>
 
 <style lang="scss">
-@import './assets/scss/main.scss';
-body{
-  background: #202833;
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity var(--transition-base);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.fade-enter-active,
+	.fade-leave-active {
+		transition: none;
+	}
 }
 </style>

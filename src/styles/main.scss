@@ -1,0 +1,79 @@
+@use 'reset';
+@use 'tokens';
+@use 'mixins' as *;
+
+// Posição do brilho dos cards (Card spotlight): registradas para poderem transicionar
+@property --spot-x {
+	syntax: '<length-percentage>';
+	inherits: false;
+	initial-value: 92%;
+}
+
+@property --spot-y {
+	syntax: '<length-percentage>';
+	inherits: false;
+	initial-value: 8%;
+}
+
+html {
+	scroll-behavior: smooth;
+	background: var(--color-bg);
+
+	@media (prefers-reduced-motion: reduce) {
+		scroll-behavior: auto;
+	}
+}
+
+// Sem background no body: o fundo fica no html, para o StarField (z-index -1) aparecer
+body {
+	min-height: 100vh;
+	color: var(--color-text);
+	font-family: var(--font-family);
+	font-size: var(--fs-md);
+	font-weight: var(--fw-regular);
+	line-height: var(--lh-body);
+	overflow-x: hidden;
+}
+
+::selection {
+	background: var(--color-accent);
+	color: var(--color-text);
+}
+
+.container {
+	@include container;
+}
+
+// Regra de seção: 100% de altura no desktop, fluxo contínuo com 400px no mobile
+.section {
+	scroll-margin-top: var(--header-offset);
+
+	& + & {
+		margin-block-start: var(--space-section-mobile);
+	}
+
+	@include bp(lg) {
+		min-height: 100vh;
+		min-height: 100dvh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding-block: var(--header-offset) var(--space-9);
+
+		& + & {
+			margin-block-start: 0;
+		}
+	}
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}

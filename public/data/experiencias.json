@@ -1,0 +1,32 @@
+{
+	"label": { "pt": "Experiências", "en": "Experience" },
+	"items": [
+		{
+			"period": { "pt": "[demo] Janeiro 2020 - Presente", "en": "[demo] January 2020 - Present" },
+			"role": { "pt": "[demo] Desenvolvedor Full Stack", "en": "[demo] Full Stack Developer" },
+			"company": "[demo] Empresa A",
+			"description": {
+				"pt": "[demo] Desenvolvimento de produtos web de ponta a ponta, integrações entre sistemas e automações internas.",
+				"en": "[demo] End to end web product development, system integrations and internal automation."
+			}
+		},
+		{
+			"period": { "pt": "[demo] Março 2017 - Dezembro 2019", "en": "[demo] March 2017 - December 2019" },
+			"role": { "pt": "[demo] Desenvolvedor Frontend", "en": "[demo] Frontend Developer" },
+			"company": "[demo] Empresa B",
+			"description": {
+				"pt": "[demo] Criação de interfaces responsivas em Vue, componentes reutilizáveis e melhorias de performance.",
+				"en": "[demo] Responsive interfaces in Vue, reusable components and performance improvements."
+			}
+		},
+		{
+			"period": { "pt": "[demo] Fevereiro 2015 - Fevereiro 2017", "en": "[demo] February 2015 - February 2017" },
+			"role": { "pt": "[demo] Desenvolvedor Web", "en": "[demo] Web Developer" },
+			"company": "[demo] Empresa C",
+			"description": {
+				"pt": "[demo] Sites institucionais e sistemas em PHP, do levantamento de requisitos à publicação.",
+				"en": "[demo] Institutional websites and PHP systems, from requirements to deployment."
+			}
+		}
+	]
+}

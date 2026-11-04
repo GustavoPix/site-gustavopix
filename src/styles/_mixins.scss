@@ -1,0 +1,37 @@
+@use "sass:map";
+
+$breakpoints: (
+	sm: 640px,
+	md: 768px,
+	lg: 1024px,
+	xl: 1280px,
+	xxl: 1536px
+);
+
+// Mobile-first: aplica a partir do breakpoint informado
+@mixin bp($name) {
+	@media (min-width: map.get($breakpoints, $name)) {
+		@content;
+	}
+}
+
+// Abaixo do breakpoint informado
+@mixin bp-down($name) {
+	@media (max-width: map.get($breakpoints, $name) - 2px) {
+		@content;
+	}
+}
+
+@mixin container {
+	width: 100%;
+	max-width: var(--container-max);
+	margin-inline: auto;
+	padding-inline: var(--container-pad);
+}
+
+@mixin focus-ring {
+	&:focus-visible {
+		outline: var(--border-thick) solid var(--color-accent);
+		outline-offset: var(--space-2);
+	}
+}
