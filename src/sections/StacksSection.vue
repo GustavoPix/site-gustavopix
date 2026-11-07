@@ -3,11 +3,26 @@
 		<div class="container">
 			<SectionLabel id="stacks-title">{{ t(stacks.label) }}</SectionLabel>
 
-			<div class="stacks">
-				<Card v-for="(group, index) in stacks.groups" :key="index" spotlight class="stacks__card">
+			<div ref="root" class="stacks reveal" :class="{ 'is-revealed': revealed }">
+				<Card
+					v-for="(group, index) in stacks.groups"
+					:key="index"
+					:ref="setCard(index)"
+					spotlight
+					class="stacks__card reveal-card"
+					:style="cardStyle(index)"
+				>
 					<h3 class="stacks__title">{{ t(group.title) }}</h3>
 					<ul class="stacks__chips">
-						<Chip v-for="item in group.items" :key="item" variant="outline">{{ item }}</Chip>
+						<Chip
+							v-for="(item, chipIndex) in group.items"
+							:key="item"
+							variant="outline"
+							class="reveal-bullet"
+							:style="{ '--i': chipIndex }"
+						>
+							{{ item }}
+						</Chip>
 					</ul>
 				</Card>
 			</div>
@@ -17,6 +32,7 @@
 
 <script setup>
 import { useLang } from '@/composables/useLang.js'
+import { useStackReveal } from '@/composables/useReveal.js'
 import SectionLabel from '@/components/ui/SectionLabel.vue'
 import Card from '@/components/ui/Card.vue'
 import Chip from '@/components/ui/Chip.vue'
@@ -26,6 +42,7 @@ defineProps({
 })
 
 const { t } = useLang()
+const { root, revealed, setCard, cardStyle } = useStackReveal()
 </script>
 
 <style lang="scss" scoped>

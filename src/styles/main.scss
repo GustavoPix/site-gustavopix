@@ -44,7 +44,7 @@ body {
 	@include container;
 }
 
-// Regra de seção: 100% de altura no desktop, fluxo contínuo com 400px no mobile
+// Regra de seção: 100% de altura no desktop, fluxo contínuo com 250px no mobile
 .section {
 	scroll-margin-top: var(--header-offset);
 
@@ -63,6 +63,76 @@ body {
 		& + & {
 			margin-block-start: 0;
 		}
+	}
+}
+
+// Troca de tema: cross-fade da View Transitions API
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: var(--duration-theme);
+	animation-timing-function: ease;
+}
+
+// Revelação no scroll (useReveal.js). O bloco ganha .reveal e, ao entrar na tela, .is-revealed.
+// Os estados ocultos usam filter/translate/scale para não brigar com opacity e transform dos componentes.
+//   .reveal-card   → sai do empilhamento (--from-x/--from-y) até a posição original
+//   .reveal-bullet → fade da esquerda para a direita, depois dos cards (--i = ordem no card)
+//   .reveal-pop    → marcador surge de cima para baixo (--i = ordem na lista)
+//   .reveal-info   → fade da esquerda para a direita, depois de todos os marcadores (--count)
+.reveal {
+	&:not(.is-revealed) {
+		.reveal-card {
+			translate: var(--from-x, 0) var(--from-y, 0);
+		}
+
+		.reveal-bullet,
+		.reveal-pop,
+		.reveal-info {
+			filter: opacity(0);
+		}
+	}
+
+	&.is-revealed {
+		.reveal-card {
+			animation: reveal-stack var(--reveal-move) var(--ease-out) both;
+		}
+
+		.reveal-bullet {
+			animation: reveal-fade-x var(--reveal-fade) var(--ease-out) backwards;
+			animation-delay: calc(var(--reveal-move) + var(--i, 0) * var(--reveal-step));
+		}
+
+		.reveal-pop {
+			animation: reveal-pop var(--reveal-fade) var(--ease-bounce) backwards;
+			animation-delay: calc(var(--i, 0) * var(--reveal-step) * 2);
+		}
+
+		.reveal-info {
+			animation: reveal-fade-x var(--reveal-fade) var(--ease-out) backwards;
+			animation-delay: calc(
+				var(--count, 1) * var(--reveal-step) * 2 + var(--reveal-fade) + var(--i, 0) * var(--reveal-step)
+			);
+		}
+	}
+}
+
+@keyframes reveal-stack {
+	from {
+		translate: var(--from-x, 0) var(--from-y, 0);
+	}
+}
+
+@keyframes reveal-fade-x {
+	from {
+		filter: opacity(0);
+		translate: calc(var(--space-5) * -1) 0;
+	}
+}
+
+@keyframes reveal-pop {
+	from {
+		filter: opacity(0);
+		scale: 0;
 	}
 }
 

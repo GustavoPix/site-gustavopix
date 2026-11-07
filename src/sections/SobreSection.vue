@@ -9,13 +9,15 @@
 					<p class="sobre__body">{{ t(sobre.text) }}</p>
 				</div>
 
-				<dl class="sobre__stats">
+				<dl ref="root" class="sobre__stats reveal" :class="{ 'is-revealed': revealed }">
 					<Card
 						v-for="(stat, index) in sobre.stats"
 						:key="index"
+						:ref="setCard(index)"
 						tag="div"
 						spotlight
-						class="sobre__stat"
+						class="sobre__stat reveal-card"
+						:style="cardStyle(index)"
 					>
 						<dt class="sobre__stat-label">{{ t(stat.label) }}</dt>
 						<dd class="sobre__stat-value">{{ t(stat.value) }}</dd>
@@ -28,6 +30,7 @@
 
 <script setup>
 import { useLang } from '@/composables/useLang.js'
+import { useStackReveal } from '@/composables/useReveal.js'
 import SectionLabel from '@/components/ui/SectionLabel.vue'
 import Card from '@/components/ui/Card.vue'
 
@@ -36,6 +39,7 @@ defineProps({
 })
 
 const { t } = useLang()
+const { root, revealed, setCard, cardStyle } = useStackReveal()
 </script>
 
 <style lang="scss" scoped>

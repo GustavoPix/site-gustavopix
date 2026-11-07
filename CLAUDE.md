@@ -168,8 +168,13 @@ Três temas completos, trocados pelo conta-gotas do header (`ThemePicker.vue`, `
 - Cards com `spotlight` (`<Card spotlight>`, hoje em Sobre e Stacks): brilho radial de 480px no accent a 12% que segue o mouse, como os cards "receipts" de devhasibulislam. Quando o mouse sai, volta para 92%/8%. `--spot-x/--spot-y` são `@property` em `main.scss`.
 - Cards de Stacks e Projetos usam `<Chip variant="outline">`, nas proporções da seção #skills de portfolio-sweandrew. No hover, o título dos cards de Stacks vai de 50% para branco.
 - Projetos: cada item tem um único `url` e um botão "Visite" (`ui.visit`).
-- Contatos: cada item tem uma chave `icon` (`email | linkedin | github | whatsapp`), renderizada por `ContactIcon.vue`.
+- Contatos: cada item tem uma chave `icon` (`email | linkedin | github | whatsapp`), renderizada por `ContactIcon.vue`. A linha inteira é o link, sem sublinhado. No hover, o tipo fica branco e o ícone e o valor vão para o accent. Não há mais bloco de apoio (Ko-fi).
 - Experiências: timeline guiada pelo scroll, como a seção #experience de portfolio-sweandrew. O preenchimento vai até a "cabeça" no meio da viewport. Ficam ativos os itens até 35% da tela acima dela, e o mais recente ganha um anel pulsante. Itens desativados ficam com `--timeline-inactive` (0.5).
+- Troca de tema com cross-fade da View Transitions API (`setTheme` em `useTheme.js`, duração `--duration-theme`). Sem suporte ou com `prefers-reduced-motion`, a troca é instantânea.
+- Revelação no scroll (`useReveal.js` + classes `.reveal-*` em `main.scss`), disparada uma vez quando o bloco passa de 75% da viewport:
+  - Sobre, Stacks e Projetos (`useStackReveal`): os cards começam empilhados sobre o primeiro e vão para suas posições. Em Stacks e Projetos, os chips (`.reveal-bullet`) aparecem depois, um a um, da esquerda para a direita.
+  - Experiências e Contatos (`useReveal`): os marcadores/ícones (`.reveal-pop`) surgem de cima para baixo; depois, as infos (`.reveal-info`) entram com fade da esquerda para a direita.
+  - Os estados ocultos usam `filter`/`translate`/`scale` (nunca `opacity`/`transform`) para não brigar com a opacidade da timeline e com os componentes.
 - Por causa dessa camada, **nem o `body` nem as seções podem ter background**; o fundo fica no `html`. Cards usam `--color-bg` e cobrem as estrelas.
 
 ### Tipografia
@@ -202,7 +207,8 @@ Escala única, **somente múltiplos de 2** (base 8 com passos finos):
 --space-1: 2px   --space-2: 4px   --space-3: 8px   --space-4: 12px
 --space-5: 16px  --space-6: 24px  --space-7: 32px  --space-8: 48px
 --space-9: 64px  --space-10: 96px --space-11: 128px
---space-section-mobile: 400px
+--space-section-mobile: 250px
+--space-footer-mobile: 124px
 ```
 
 Valores ímpares do Penpot (59, 81, 107, 223…) são sempre arredondados para o token mais próximo. **Nenhum valor ímpar** de margin, padding, gap, width, height, top/left ou border-radius pode aparecer no SCSS (bordas de 1px são a única exceção).
@@ -221,7 +227,7 @@ Valores ímpares do Penpot (59, 81, 107, 223…) são sempre arredondados para o
   - `min-height: 100vh; min-height: 100dvh;` (usar `min-height`, nunca `height`, para não cortar conteúdo).
   - Conteúdo centralizado verticalmente com flex (`display: flex; flex-direction: column; justify-content: center`).
   - Header fixo: compensar com `scroll-margin-top` nas seções e padding-top no hero.
-- **Mobile (< 1024px):** fluxo **contínuo**, sem altura mínima; **400px de espaçamento entre seções** (`margin-block-start: var(--space-section-mobile)` a partir da segunda seção).
+- **Mobile (< 1024px):** fluxo **contínuo**, sem altura mínima; **250px de espaçamento entre seções** (`margin-block-start: var(--space-section-mobile)` a partir da segunda seção) e **124px (metade, arredondada para par) entre a última seção e o footer** (`--space-footer-mobile`).
 
 ### Container e alinhamento
 

@@ -81,10 +81,6 @@
 				"pt": "Temas",
 				"en": "Themes"
 			},
-			"count": {
-				"pt": "{n} temas",
-				"en": "{n} themes"
-			},
 			"items": [
 				{
 					"id": "midnight",
@@ -233,18 +229,7 @@
 				"value": "+55 (19) 99551-7805",
 				"url": "https://wa.me/5519995517805"
 			}
-		],
-		"support": {
-			"text": {
-				"pt": "Gostou do meu trabalho? Considere me pagar um café.",
-				"en": "Consider supporting me by buying a coffee."
-			},
-			"label": {
-				"pt": "Apoiar no Ko-fi",
-				"en": "Support on Ko-fi"
-			},
-			"url": "https://ko-fi.com/J3J7150BS6"
-		}
+		]
 	},
 	"footer": {
 		"text": "© {year} Gustavo Carvalho"

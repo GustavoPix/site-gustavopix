@@ -9,22 +9,29 @@
 					<span class="timeline__head"></span>
 				</div>
 
-				<ol class="timeline__list">
+				<!-- Marcadores surgem de cima para baixo; depois, as infos entram da esquerda (useReveal) -->
+				<ol
+					ref="revealRoot"
+					class="timeline__list reveal"
+					:class="{ 'is-revealed': revealed }"
+					:style="{ '--count': experiencias.items.length }"
+				>
 					<li
 						v-for="(item, index) in experiencias.items"
 						:key="index"
 						:ref="(el) => (itemEls[index] = el)"
 						class="timeline__item"
 						:class="{ 'is-active': active[index], 'is-current': index === currentIndex }"
+						:style="{ '--i': index }"
 					>
-						<span class="timeline__marker" aria-hidden="true"></span>
-						<p class="timeline__period">{{ t(item.period) }}</p>
-						<h3 class="timeline__title">
+						<span class="timeline__marker reveal-pop" aria-hidden="true"></span>
+						<p class="timeline__period reveal-info">{{ t(item.period) }}</p>
+						<h3 class="timeline__title reveal-info">
 							<span>{{ t(item.role) }}</span>
 							<span class="timeline__sep" aria-hidden="true"></span>
 							<span>{{ t(item.company) }}</span>
 						</h3>
-						<p class="timeline__description">{{ t(item.description) }}</p>
+						<p class="timeline__description reveal-info">{{ t(item.description) }}</p>
 					</li>
 				</ol>
 			</div>
@@ -35,11 +42,14 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useLang } from '@/composables/useLang.js'
+import { useReveal } from '@/composables/useReveal.js'
 import SectionLabel from '@/components/ui/SectionLabel.vue'
 
 const props = defineProps({
 	experiencias: { type: Object, required: true }
 })
+
+const { root: revealRoot, revealed } = useReveal()
 
 // Timeline guiada pelo scroll, como a seção #experience de portfolio-sweandrew:
 // o preenchimento avança até a "cabeça" (meio da viewport) e os itens logo acima dela ficam ativos

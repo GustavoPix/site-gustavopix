@@ -4,12 +4,27 @@
 			<SectionLabel id="projetos-title">{{ t(projetos.label) }}</SectionLabel>
 			<p class="projetos__intro">{{ t(projetos.intro) }}</p>
 
-			<div class="projetos">
-				<Card v-for="item in projetos.items" :key="item.id" spotlight class="projetos__card">
+			<div ref="root" class="projetos reveal" :class="{ 'is-revealed': revealed }">
+				<Card
+					v-for="(item, index) in projetos.items"
+					:key="item.id"
+					:ref="setCard(index)"
+					spotlight
+					class="projetos__card reveal-card"
+					:style="cardStyle(index)"
+				>
 					<h3 class="projetos__title">{{ t(item.title) }}</h3>
 					<p class="projetos__description">{{ t(item.description) }}</p>
 					<ul v-if="item.tags?.length" class="projetos__tags">
-						<Chip v-for="tag in item.tags" :key="tag" variant="outline">{{ tag }}</Chip>
+						<Chip
+							v-for="(tag, tagIndex) in item.tags"
+							:key="tag"
+							variant="outline"
+							class="reveal-bullet"
+							:style="{ '--i': tagIndex }"
+						>
+							{{ tag }}
+						</Chip>
 					</ul>
 					<div class="projetos__action">
 						<PillButton :href="item.url" size="sm" :new-tab-label="t(ui.newTab)">
@@ -24,6 +39,7 @@
 
 <script setup>
 import { useLang } from '@/composables/useLang.js'
+import { useStackReveal } from '@/composables/useReveal.js'
 import SectionLabel from '@/components/ui/SectionLabel.vue'
 import Card from '@/components/ui/Card.vue'
 import Chip from '@/components/ui/Chip.vue'
@@ -35,6 +51,7 @@ defineProps({
 })
 
 const { t } = useLang()
+const { root, revealed, setCard, cardStyle } = useStackReveal()
 </script>
 
 <style lang="scss" scoped>

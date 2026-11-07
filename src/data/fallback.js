@@ -13,7 +13,6 @@ export default {
 		themes: {
 			button: { pt: 'Escolher tema', en: 'Choose theme' },
 			title: { pt: 'Temas', en: 'Themes' },
-			count: { pt: '{n} temas', en: '{n} themes' },
 			items: [
 				{ id: 'midnight', name: 'Midnight', description: { pt: 'Padrão', en: 'Default' } },
 				{ id: 'dracula', name: 'Dracula', description: { pt: 'Roxo', en: 'Purple' } },

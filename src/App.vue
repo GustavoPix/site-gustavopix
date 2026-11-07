@@ -4,6 +4,7 @@
 
 		<div v-else class="app">
 			<StarField />
+			<NyanCat />
 			<AppHeader :nav="data.nav" />
 			<main>
 				<HeroSection :hero="data.hero" />
@@ -29,6 +30,7 @@ import AppLoader from '@/components/layout/AppLoader.vue'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
 import StarField from '@/components/layout/StarField.vue'
+import NyanCat from '@/components/ui/NyanCat.vue'
 import HeroSection from '@/sections/HeroSection.vue'
 import SobreSection from '@/sections/SobreSection.vue'
 import StacksSection from '@/sections/StacksSection.vue'

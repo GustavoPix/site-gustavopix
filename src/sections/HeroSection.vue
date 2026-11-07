@@ -68,6 +68,7 @@ const { t } = useLang()
 	}
 
 	&__name {
+		color: var(--color-accent);
 		font-size: var(--fs-display);
 		font-weight: var(--fw-extrabold);
 		line-height: var(--lh-tight);

@@ -20,7 +20,6 @@
 			<div v-if="open" id="theme-panel" class="theme-picker__panel">
 				<div class="theme-picker__head">
 					<p class="theme-picker__title">{{ t(themes.title) }}</p>
-					<span class="theme-picker__count">{{ countLabel }}</span>
 				</div>
 
 				<ul class="theme-picker__list">
@@ -49,11 +48,11 @@
 </template>
 
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useLang } from '@/composables/useLang.js'
 import { useTheme } from '@/composables/useTheme.js'
 
-const props = defineProps({
+defineProps({
 	themes: { type: Object, required: true }
 })
 
@@ -61,8 +60,6 @@ const { t } = useLang()
 const { theme, setTheme } = useTheme()
 const open = ref(false)
 const root = ref(null)
-
-const countLabel = computed(() => t(props.themes.count).replace('{n}', props.themes.items.length))
 
 function choose(id) {
 	setTheme(id)
@@ -167,15 +164,6 @@ onBeforeUnmount(() => {
 		text-transform: uppercase;
 	}
 
-	&__count {
-		padding: var(--space-1) var(--space-3);
-		border-radius: var(--radius-pill);
-		background: var(--color-accent-soft);
-		color: var(--color-accent);
-		font-size: var(--nav-fs);
-		font-weight: var(--fw-semibold);
-	}
-
 	&__list {
 		display: flex;
 		flex-direction: column;
@@ -209,26 +197,14 @@ onBeforeUnmount(() => {
 		}
 	}
 
-	// Amostra: fundo do tema com a cor de destaque no canto superior direito
+	// Amostra: círculo dividido ao meio em 45°, fundo do tema em cima/esquerda e accent embaixo/direita
 	&__swatch {
-		position: relative;
 		flex-shrink: 0;
 		width: var(--swatch-size);
 		height: var(--swatch-size);
-		overflow: hidden;
-		border-radius: var(--radius-swatch);
-		background: var(--color-bg);
-		box-shadow: 0 0 0 var(--border-thick) var(--color-hover);
-
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			right: 0;
-			width: 50%;
-			height: 50%;
-			background: var(--color-accent);
-		}
+		border-radius: 50%;
+		background: linear-gradient(135deg, var(--color-bg) 50%, var(--color-accent) 50%);
+		box-shadow: 0 0 0 var(--border-thick) var(--color-border);
 	}
 
 	&__text {
