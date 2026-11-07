@@ -158,6 +158,10 @@ Três temas completos, trocados pelo conta-gotas do header (`ThemePicker.vue`, `
 | `midnight` (padrão, Penpot) | `#0F131A` | `#242C38` | `#27354E` | `#5779B6` |
 | `dracula` | `#282A36` | `#343746` | `#44475A` | `#BD93F9` |
 | `nord` | `#2E3440` | `#3B4252` | `#434C5E` | `#88C0D0` |
+| `forest` | `#1B1F23` | `#0B3D2E` | `#145A3A` | `#CBBFA6` |
+| `red` (Inferno) | `#0B0605` | `#1E0D0B` | `#4A0000` | `#E03A2F` |
+
+- Easter egg do console: `useDevtools.js` detecta o DevTools (tamanho da janela + getter no `console.debug`). Na primeira abertura (uma vez por carregamento) → `ignite()` (`useTheme.js`: troca de verdade para o Inferno, refletido no seletor, e liga `fire`) e aviso de `site.json > devtools.message` no console. Qualquer troca de tema desliga as chamas; clicar no Inferno já ativo liga/desliga. Com `fire` ligado, `FireMatrix.vue` mostra o fogo do Doom (base: github.com/tiagomenegaz/doom-fire): canvas fixo no rodapé, matriz de blocos `--fire-cell` (10px), 37 intensidades (0 = transparente, 36 = branco) passando por `--fire-low` → `--fire-mid` → `--fire-high`. A linha de baixo é a fonte fixa em 36; cada célula recebe a de baixo menos 0–2 e é gravada esse número de blocos à esquerda (vento). Constantes (`ROWS`, `TICK_MS`, `MAX_DECAY`) no topo do script.
 
 - As cores derivadas (`--color-bg-translucent`, `--color-accent-soft`, `--color-accent-line`) são calculadas com `color-mix`. Componentes nunca usam hex direto.
 - Para adicionar um tema: bloco `[data-theme='x']` em `_tokens.scss`, id em `THEMES` (`useTheme.js`), item em `site.json > nav.themes` e em `fallback.js`, e as cores do loader no `<script>`/`<style>` do `index.html`.
@@ -227,6 +231,7 @@ Valores ímpares do Penpot (59, 81, 107, 223…) são sempre arredondados para o
   - `min-height: 100vh; min-height: 100dvh;` (usar `min-height`, nunca `height`, para não cortar conteúdo).
   - Conteúdo centralizado verticalmente com flex (`display: flex; flex-direction: column; justify-content: center`).
   - Header fixo: compensar com `scroll-margin-top` nas seções e padding-top no hero.
+- **Hero (`#inicio`):** `min-height: 100dvh` em **todos** os tamanhos, para que nenhuma troca de idioma revele a próxima seção.
 - **Mobile (< 1024px):** fluxo **contínuo**, sem altura mínima; **250px de espaçamento entre seções** (`margin-block-start: var(--space-section-mobile)` a partir da segunda seção) e **124px (metade, arredondada para par) entre a última seção e o footer** (`--space-footer-mobile`).
 
 ### Container e alinhamento

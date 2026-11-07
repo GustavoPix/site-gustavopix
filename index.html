@@ -14,13 +14,15 @@
 			// Aplica o tema salvo antes da primeira pintura (cores completas em src/styles/_tokens.scss)
 			try {
 				var t = localStorage.getItem('theme');
-				if (t === 'midnight' || t === 'dracula' || t === 'nord') document.documentElement.dataset.theme = t;
+				if (['midnight', 'dracula', 'nord', 'forest', 'red'].indexOf(t) !== -1) document.documentElement.dataset.theme = t;
 			} catch (e) {}
 		</script>
 		<style>
 			:root, [data-theme='midnight'] { --boot-bg: #0F131A; --boot-line: #27354E; --boot-accent: #5779B6; }
 			[data-theme='dracula'] { --boot-bg: #282A36; --boot-line: #44475A; --boot-accent: #BD93F9; }
 			[data-theme='nord'] { --boot-bg: #2E3440; --boot-line: #434C5E; --boot-accent: #88C0D0; }
+			[data-theme='forest'] { --boot-bg: #1B1F23; --boot-line: #145A3A; --boot-accent: #CBBFA6; }
+			[data-theme='red'] { --boot-bg: #0B0605; --boot-line: #4A0000; --boot-accent: #E03A2F; }
 			html { background: var(--boot-bg); }
 			body { margin: 0; }
 			.boot-loader {

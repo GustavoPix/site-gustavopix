@@ -5,6 +5,7 @@
 		<div v-else class="app">
 			<StarField />
 			<NyanCat />
+			<FireMatrix v-if="fire" />
 			<AppHeader :nav="data.nav" />
 			<main>
 				<HeroSection :hero="data.hero" />
@@ -22,9 +23,12 @@
 </template>
 
 <script setup>
-import { computed, onMounted, watchEffect } from 'vue'
+import { computed, onMounted, watch, watchEffect } from 'vue'
 import { loadSiteData, useSiteData } from '@/composables/useSiteData.js'
 import { useLang } from '@/composables/useLang.js'
+import { useTheme } from '@/composables/useTheme.js'
+import { useDevtools } from '@/composables/useDevtools.js'
+import FireMatrix from '@/components/layout/FireMatrix.vue'
 import fallback from '@/data/fallback.js'
 import AppLoader from '@/components/layout/AppLoader.vue'
 import AppHeader from '@/components/layout/AppHeader.vue'
@@ -43,6 +47,24 @@ const data = computed(() => site.data)
 const { t } = useLang()
 
 onMounted(loadSiteData)
+
+// Easter egg: na primeira abertura do DevTools (por carregamento), tema Inferno + chamas
+// e aviso no console. Depois disso o usuário troca o tema normalmente pelo seletor.
+const { fire, ignite } = useTheme()
+const { open: devtoolsOpen } = useDevtools()
+let triggered = false
+watch(devtoolsOpen, (open) => {
+	if (!open || triggered) return
+	triggered = true
+	ignite()
+	const devtools = data.value?.devtools ?? fallback.devtools
+	const styles = getComputedStyle(document.documentElement)
+	const css = (name) => styles.getPropertyValue(name).trim()
+	console.log(
+		`%c${t(devtools.message)}`,
+		`color: ${css('--fire-text')}; font-size: ${css('--fs-md')}; font-weight: ${css('--fw-extrabold')};`
+	)
+})
 
 watchEffect(() => {
 	const meta = data.value?.meta

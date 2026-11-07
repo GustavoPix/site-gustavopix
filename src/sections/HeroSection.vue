@@ -41,13 +41,16 @@ const { t } = useLang()
 <style lang="scss" scoped>
 @use '@/styles/mixins' as *;
 
+// O hero ocupa a tela inteira também no mobile: a troca de idioma (textos mais curtos)
+// não pode revelar o início da próxima seção
 .hero {
-	padding-block-start: calc(var(--header-offset) + var(--space-10));
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 100vh;
+	min-height: 100dvh;
+	padding-block: var(--header-offset) var(--space-9);
 	text-align: center;
-
-	@include bp(lg) {
-		padding-block-start: var(--header-offset);
-	}
 
 	&__inner {
 		display: flex;

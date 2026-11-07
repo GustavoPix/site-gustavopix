@@ -1,5 +1,5 @@
 // Dados estáticos usados apenas quando os JSON de public/data não carregam.
-// Mantém o mesmo formato de site.json (somente nav, hero, contatos, footer e ui).
+// Mantém o mesmo formato de site.json (somente nav, devtools, hero, contatos, footer e ui).
 export default {
 	nav: {
 		brand: 'Gustavo Carvalho',
@@ -16,8 +16,16 @@ export default {
 			items: [
 				{ id: 'midnight', name: 'Midnight', description: { pt: 'Padrão', en: 'Default' } },
 				{ id: 'dracula', name: 'Dracula', description: { pt: 'Roxo', en: 'Purple' } },
-				{ id: 'nord', name: 'Nord', description: { pt: 'Ártico', en: 'Arctic' } }
+				{ id: 'nord', name: 'Nord', description: { pt: 'Ártico', en: 'Arctic' } },
+				{ id: 'forest', name: 'Forest', description: { pt: 'Floresta', en: 'Woods' } },
+				{ id: 'red', name: 'Inferno', description: { pt: 'Brasa', en: 'Ember' } }
 			]
+		}
+	},
+	devtools: {
+		message: {
+			pt: 'Acho que vc não gostaria de olhar aqui, não há nada para você, caso precise de algo, entre em contato diretamente comigo!!!',
+			en: "I don't think you'd want to look here, there's nothing for you. If you need anything, contact me directly!!!"
 		}
 	},
 	hero: {

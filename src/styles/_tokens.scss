@@ -25,6 +25,21 @@
 	--color-accent: #88C0D0;
 }
 
+[data-theme='forest'] {
+	--color-bg: #1B1F23;
+	--color-surface: #0B3D2E;
+	--color-primary-dark: #145A3A;
+	--color-accent: #CBBFA6;
+}
+
+// Também é forçado quando o DevTools é aberto (useDevtools.js + FireMatrix.vue)
+[data-theme='red'] {
+	--color-bg: #0B0605;
+	--color-surface: #1E0D0B;
+	--color-primary-dark: #4A0000;
+	--color-accent: #E03A2F;
+}
+
 :root,
 [data-theme] {
 	--color-bg-translucent: color-mix(in srgb, var(--color-bg) 82%, transparent);
@@ -51,6 +66,13 @@
 	--color-star: #E8ECF4;
 	--shadow-float: 0 8px 24px rgba(0, 0, 0, 0.14);
 	--shadow-panel: 0 24px 48px rgba(0, 0, 0, 0.32);
+
+	// Chamas do easter egg do console (FireMatrix.vue): intensidade baixa → alta
+	--fire-low: #660000;
+	--fire-mid: #E03A2F;
+	--fire-high: #FFFFFF;
+	--fire-cell: 10px;
+	--fire-text: #E03A2F; // aviso no console
 
 	// Tipografia
 	--font-family: 'Ubuntu Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;

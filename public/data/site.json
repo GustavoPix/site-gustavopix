@@ -105,8 +105,30 @@
 						"pt": "Ártico",
 						"en": "Arctic"
 					}
+				},
+				{
+					"id": "forest",
+					"name": "Forest",
+					"description": {
+						"pt": "Floresta",
+						"en": "Woods"
+					}
+				},
+				{
+					"id": "red",
+					"name": "Inferno",
+					"description": {
+						"pt": "Brasa",
+						"en": "Ember"
+					}
 				}
 			]
+		}
+	},
+	"devtools": {
+		"message": {
+			"pt": "Acho que vc não gostaria de olhar aqui, não há nada para você, caso precise de algo, entre em contato diretamente comigo!!!",
+			"en": "I don't think you'd want to look here, there's nothing for you. If you need anything, contact me directly!!!"
 		}
 	},
 	"hero": {

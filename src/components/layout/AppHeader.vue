@@ -333,24 +333,24 @@ onBeforeUnmount(() => {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-shrink: 0;
+		width: var(--header-control);
 		height: var(--header-control);
-		padding-inline: var(--space-3);
-		border-radius: var(--radius-pill);
+		border-radius: 50%;
 		color: var(--color-text-soft);
 		font-size: var(--fs-md);
-
-		@include bp(sm) {
-			width: var(--header-control);
-			padding-inline: 0;
-		}
 		font-weight: var(--fw-extrabold);
 		letter-spacing: var(--tracking-wide);
+		-webkit-tap-highlight-color: transparent;
 		transition: color var(--transition-fast), background-color var(--transition-fast);
 		@include focus-ring;
 
-		&:hover {
-			color: var(--color-text);
-			background: var(--color-hover);
+		// Só em dispositivos com hover real: no toque o :hover "gruda" depois do clique
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				color: var(--color-text);
+				background: var(--color-hover);
+			}
 		}
 	}
 
