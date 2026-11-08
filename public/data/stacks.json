@@ -1,21 +1,54 @@
 {
-	"label": { "pt": "Stacks", "en": "Stacks" },
+	"label": {
+		"pt": "Stacks",
+		"en": "Stacks"
+	},
 	"groups": [
 		{
-			"title": { "pt": "[demo] Linguagens", "en": "[demo] Languages" },
-			"items": ["PHP", "JavaScript", "HTML", "CSS"]
+			"title": {
+				"pt": "Linguagens",
+				"en": "[demo] Languages"
+			},
+			"items": [
+				"PHP",
+				"JavaScript",
+				"HTML",
+				"CSS",
+				"Vue"
+			]
 		},
 		{
-			"title": { "pt": "[demo] Frontend", "en": "[demo] Frontend" },
-			"items": ["Vue", "Sass", "Vite"]
+			"title": {
+				"pt": "Frontend",
+				"en": "[demo] Frontend"
+			},
+			"items": [
+				"Vue",
+				"Sass",
+				"Vite"
+			]
 		},
 		{
-			"title": { "pt": "[demo] Backend", "en": "[demo] Backend" },
-			"items": ["Node", "PHP", "REST APIs"]
+			"title": {
+				"pt": "Backend",
+				"en": "[demo] Backend"
+			},
+			"items": [
+				"Node",
+				"PHP",
+				"REST APIs"
+			]
 		},
 		{
-			"title": { "pt": "[demo] Desktop e ferramentas", "en": "[demo] Desktop and tools" },
-			"items": ["Electron", "Git", "GitHub"]
+			"title": {
+				"pt": "Desktop e ferramentas",
+				"en": "[demo] Desktop and tools"
+			},
+			"items": [
+				"Electron",
+				"Git",
+				"GitHub"
+			]
 		}
 	]
 }

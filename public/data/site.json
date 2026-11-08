@@ -138,18 +138,18 @@
 			"en": "Full Stack Developer"
 		},
 		"tagline": {
-			"pt": "[demo] Construo software de ponta a ponta: produtos full stack, integrações com IA, APIs, bots e as automações que mantêm um negócio rodando.",
-			"en": "[demo] I build software end to end: full stack products, AI integrations, APIs, bots and the automation that quietly runs a business."
+			"pt": "Construo software de ponta a ponta: produtos full stack, integrações com IA, APIs, bots e as automações que mantêm um negócio rodando.",
+			"en": "I build software end to end: full stack products, AI integrations, APIs, bots and the automation that quietly runs a business."
 		},
 		"meta": [
 			{
 				"label": {
-					"pt": "Base",
-					"en": "Base"
+					"pt": "Experiencia",
+					"en": "Experience"
 				},
 				"value": {
-					"pt": "[demo] 10 anos",
-					"en": "[demo] 10 years"
+					"pt": "8 anos",
+					"en": "8 years"
 				}
 			}
 		],
@@ -162,7 +162,8 @@
 			"Vue",
 			"HTML",
 			"CSS",
-			"Node"
+			"Node",
+			"AI Integration"
 		]
 	},
 	"sobre": {
@@ -171,37 +172,37 @@
 			"en": "About"
 		},
 		"lead": {
-			"pt": "[demo] Sou desenvolvedor full stack e gosto de transformar ideias em produtos que funcionam de verdade, do banco de dados à interface.",
+			"pt": "Sou desenvolvedor full stack e gosto de transformar ideias em produtos que funcionam de verdade, do banco de dados à interface.",
 			"en": "[demo] I am a full stack developer who enjoys turning ideas into products that actually work, from the database to the interface."
 		},
 		"text": {
-			"pt": "[demo] Trabalho com times pequenos e grandes, cuidando de arquitetura, código limpo e entregas contínuas. Acredito em soluções simples, bem testadas e fáceis de manter.",
+			"pt": "Trabalho com times pequenos e grandes, cuidando de arquitetura, código limpo e entregas contínuas. Acredito em soluções simples, bem testadas e fáceis de manter.",
 			"en": "[demo] I work with small and large teams, taking care of architecture, clean code and continuous delivery. I believe in simple, well tested and easy to maintain solutions."
 		},
 		"stats": [
 			{
-				"value": "[demo] 10",
+				"value": "8",
 				"label": {
 					"pt": "anos de experiência",
 					"en": "years of experience"
 				}
 			},
 			{
-				"value": "[demo] 4",
+				"value": "4",
 				"label": {
 					"pt": "linguagens de programação",
 					"en": "programming languages"
 				}
 			},
 			{
-				"value": "[demo] 50+",
+				"value": "50+",
 				"label": {
 					"pt": "projetos entregues",
 					"en": "delivered projects"
 				}
 			},
 			{
-				"value": "[demo] 99.9%",
+				"value": "99.9%",
 				"label": {
 					"pt": "uptime de dedicação",
 					"en": "dedication uptime"

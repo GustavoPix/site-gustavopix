@@ -5,6 +5,9 @@
     "baseUrl": "./",
     "moduleResolution": "bundler",
     "paths": {
+      "@admin-route": [
+        "src/router/adminRoute.local.js"
+      ],
       "@/*": [
         "src/*"
       ]

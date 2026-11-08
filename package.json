@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:prod": "vite build",
+    "build:local": "vite build --mode admin",
     "preview": "vite preview",
+    "preview:local": "vite preview --mode admin",
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {

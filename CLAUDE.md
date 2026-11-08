@@ -40,13 +40,16 @@ O que extrair delas: container central com bastante margem, muito espaço em bra
 
 - **Vite** + `@vitejs/plugin-vue`, Vue 3, Sass, ESLint (`eslint-plugin-vue`).
 - `vite.config.js`:
-  - `base: './'` (caminhos relativos; funciona em `usuario.github.io/site-gustavopix/` e em domínio próprio).
-  - alias `@` → `src`.
+  - `base: './'` no prod (caminhos relativos; funciona em `usuario.github.io/site-gustavopix/` e em domínio próprio) e `/` nos modos com admin.
+  - alias `@` → `src`; alias `@admin-route` → stub no prod ou rota real nos modos com admin.
 - Scripts:
-  - `npm run dev` — servidor de desenvolvimento
-  - `npm run build` — gera `dist/`
-  - `npm run preview` — serve o build localmente (use para validar caminhos relativos)
+  - `npm run dev` — servidor de desenvolvimento, com o painel em `/admin`
+  - `npm run build` ou `npm run build:prod` — gera `dist/`, sem o painel
+  - `npm run build:local` — gera `dist-local/`, com o painel (modo Vite `admin`; o Vite não aceita um modo chamado `local`)
+  - `npm run preview` — serve o build de prod localmente (use para validar caminhos relativos)
+  - `npm run preview:local` — serve `dist-local/` com a API do painel
   - `npm run lint`
+- Painel `/admin` (sem login, só local): edita `public/data/*.json` pela API de `vite/admin-api-plugin.js`, que só aceita requisições de localhost com a mesma origem. O formulário é gerado do formato do JSON; exceções por campo (somente leitura, select, tamanho fixo) ficam em `src/admin/fieldRules.js`. Os modos com admin são definidos em `ADMIN_MODES` (`vite.config.js`); nenhum arquivo importado pelo site pode importar `src/admin/` diretamente, só via `@admin-route`.
 - Deploy: `deploy.sh` permanece (build → `dist/` → push forçado para `gh-pages`).
 - Os `fetch` de dados devem usar caminho relativo (`./data/site.json`) ou `import.meta.env.BASE_URL`, nunca `/data/...`.
 
@@ -57,6 +60,8 @@ O que extrair delas: container central com bastante margem, muito espaço em bra
 ```
 index.html                         # raiz (padrão Vite), <title>Gustavo Carvalho</title>
 vite.config.js
+vite/
+  admin-api-plugin.js              # API local do painel (leitura e gravação dos JSON)
 public/
   data/
     site.json                      # meta, nav, hero, sobre (texto + stats), contatos
@@ -68,6 +73,8 @@ public/
 src/
   main.js
   App.vue                          # carrega dados, provê idioma, renderiza seções
+  admin/                           # painel /admin (fora do build de prod)
+  router/                          # adminRoute.local.js e adminRoute.prod.js (stub)
   composables/
     useSiteData.js                 # fetch dos JSON, estado { data, loading, error }
     useLang.js                     # 'pt' | 'en', persiste em localStorage, t(campo)
